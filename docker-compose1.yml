@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile.bot
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - ADMIN_ID=${ADMIN_ID}
+      - DATABASE_URL=sqlite:///vpn_users.db
+    volumes:
+      - ./vpn_users.db:/app/vpn_users.db
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - ADMIN_ID=${ADMIN_ID}
+      - DATABASE_URL=sqlite:///vpn_users.db
+    volumes:
+      - ./vpn_users.db:/app/vpn_users.db
+    ports:
+      - "14888:14888"
+    restart: unless-stopped
+
+  xray:
+    build:
+      context: .
+      dockerfile: Dockerfile.xray
+    volumes:
+      - ./xray/config.json:/opt/xray/config.json
+      - /etc/xray:/etc/xray
+    ports:
+      - "443:443"
+    restart: unless-stopped

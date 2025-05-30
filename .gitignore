@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+
+# Virtual environment
+bot-venv/
+venv/
+env/
+
+# SQLite database
+data/vpn_users.db
+
+# Environment variables
+.env
+config/
+
+# Xray certificates and sensitive configs
+/etc/xray/fullchain.pem
+/etc/xray/privkey.pem
+xray/*.pem
+
+# Docker
+docker-compose.override.yml
+*.log
+*.tar
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+
+# Editor and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+
+# Cache
+*.cache
+.cache/
+*.pytest_cache/
